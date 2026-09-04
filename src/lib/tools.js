@@ -7,6 +7,7 @@
  */
 
 import { PRIORITIES, DUE_LABELS } from './store.js';
+import { reply } from './reply.js';
 
 const priorityProp = {
   type: 'string',
@@ -29,7 +30,7 @@ const idProp = {
 };
 
 export function buildTools(store) {
-  return [
+  const defs = [
     {
       name: 'create_task',
       description:
@@ -150,4 +151,10 @@ export function buildTools(store) {
       execute: () => store.getSummary(),
     },
   ];
+
+  // One place to guarantee every tool answers in the shape hosts expect.
+  return defs.map((def) => ({
+    ...def,
+    execute: async (args) => reply(await def.execute(args)),
+  }));
 }

@@ -3,6 +3,7 @@ import { ShieldAlert, CheckCircle2, Send, Eraser, Lock } from 'lucide-react';
 
 import { store } from '../lib/instance.js';
 import { CLAIM_FIELDS, CAPS, isVisible, validateClaim } from '../lib/claimRules.js';
+import { reply } from '../lib/reply.js';
 
 /**
  * The declarative WebMCP surface.
@@ -78,7 +79,7 @@ export default function ClaimForm() {
         `Claim ${claimId} accepted — ${v.destination}, ₹${Number(v.amount_inr).toLocaleString('en-IN')}`,
       );
       if (agentInvoked) {
-        e.respondWith({ status: 'accepted', accepted: true, claim: receipt });
+        e.respondWith(reply({ status: 'accepted', accepted: true, claim: receipt }));
       }
       return;
     }
@@ -94,15 +95,17 @@ export default function ClaimForm() {
 
     if (agentInvoked) {
       // The money shot: structured, field-addressed rejections the agent can act on.
-      e.respondWith({
-        status: 'rejected',
-        accepted: false,
-        errorCount: found.length,
-        errors: found,
-        hint:
-          'Each error names the field and why it failed. Correct those values and call ' +
-          'submit_travel_claim again — everything else you sent will be reused.',
-      });
+      e.respondWith(
+        reply({
+          status: 'rejected',
+          accepted: false,
+          errorCount: found.length,
+          errors: found,
+          hint:
+            'Each error names the field and why it failed. Correct those values and call ' +
+            'submit_travel_claim again — everything else you sent will be reused.',
+        }),
+      );
     }
   }
 
