@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actra — tell it the goal, let it do the work</title>
+    <meta
+      name="description"
+      content="An AI-action workspace. Real WebMCP tools, not pretend buttons."
+    />
+    <!--
+      WebMCP is behind an origin trial in Chrome. The polyfill installs
+      document.modelContext where the API is not native, so Actra runs anywhere.
+      It must load before the app so tools can register on mount.
+      To use the native API on your own origin, add your token here:
+      <meta http-equiv="origin-trial" content="YOUR_TOKEN" />
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="/webmcp-polyfill.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
