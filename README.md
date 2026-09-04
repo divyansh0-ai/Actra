@@ -13,9 +13,14 @@ Nine WebMCP tools, two surfaces, no backend. Everything runs in the tab.
 
 | | |
 | --- | --- |
-| **Live demo** | _add your deployed URL here_ |
+| **Live demo** | **<https://actra-nine.vercel.app>** |
+| **Source** | <https://github.com/divyansh0-ai/Actra> |
 | **Demo video** | _add your YouTube link here_ |
 | **License** | MIT |
+
+Open the live demo in Chrome with WebMCP enabled, or in ChatGPT's in-app browser. The badge in
+the top-right reads **WebMCP connected · 9 tools** once registration succeeds. No sign-up, no
+setup — the workspace is seeded and ready.
 
 ---
 
